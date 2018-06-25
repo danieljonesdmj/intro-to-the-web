@@ -17,8 +17,18 @@ get '/water' do
   'water keeps me alive'
 end
 
-get '/cat' do
-  "<div style='border: 3px dashed red'>
-  <img src ='http://bit.ly/1eze8aE'>
-  </div>"
+get '/random-cat' do
+  @cat_name = ["Amigo", "Oscar", "Viking"].sample
+  erb(:index)
+end
+
+post '/named-cat' do
+  p params
+  @cat_name = params[:name]
+  @colour = params[:color]
+  erb :index
+end
+
+get '/cat-form' do
+  erb :cat_form
 end
